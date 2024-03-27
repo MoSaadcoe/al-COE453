@@ -1,0 +1,138 @@
+swagger: "2.0"
+info:
+  title: CalculatorAPI
+  description: Simple calculator API that supports basic arithmetic operations.
+  version: 1.0.0
+host: cal.apigateway.coe-453-1.cloud.goog
+basePath: /
+schemes:
+  - https
+
+paths:
+  /add:
+    get:
+      operationId: addOperation
+      summary: Perform addition between two integers.
+      produces:
+        - application/json
+      parameters:
+        - name: x
+          in: query
+          required: true
+          type: integer
+          description: The first integer to add.
+        - name: y
+          in: query
+          required: true
+          type: integer
+          description: The second integer to add.
+      responses:
+        200:
+          description: A JSON object containing the operands and the result.
+          schema:
+            type: object
+            properties:
+              x:
+                type: integer
+              y:
+                type: integer
+              result:
+                type: integer
+      x-google-backend:
+        address: https://us-central1-coe-453-1.cloudfunctions.net/add
+
+  /sub:
+    get:
+      operationId: subOperation
+      summary: Perform subtraction between two integers.
+      produces:
+        - application/json
+      parameters:
+        - name: x
+          in: query
+          required: true
+          type: integer
+          description: The minuend.
+        - name: y
+          in: query
+          required: true
+          type: integer
+          description: The subtrahend.
+      responses:
+        200:
+          description: A JSON object containing the operands and the result.
+          schema:
+            type: object
+            properties:
+              x:
+                type: integer
+              y:
+                type: integer
+              result:
+                type: integer
+      x-google-backend:
+        address: https://us-central1-coe-453-1.cloudfunctions.net/sub
+
+  /mul:
+    get:
+      operationId: mulOperation
+      summary: Perform multiplication between two integers.
+      produces:
+        - application/json
+      parameters:
+        - name: x
+          in: query
+          required: true
+          type: integer
+          description: The first integer to multiply.
+        - name: y
+          in: query
+          required: true
+          type: integer
+          description: The second integer to multiply.
+      responses:
+        200:
+          description: A JSON object containing the operands and the result.
+          schema:
+            type: object
+            properties:
+              x:
+                type: integer
+              y:
+                type: integer
+              result:
+                type: integer
+      x-google-backend:
+        address: https://us-central1-coe-453-1.cloudfunctions.net/mult
+
+  /div:
+    get:
+      operationId: divOperation
+      summary: Perform division between two integers.
+      produces:
+        - application/json
+      parameters:
+        - name: x
+          in: query
+          required: true
+          type: integer
+          description: The dividend.
+        - name: y
+          in: query
+          required: true
+          type: integer
+          description: The divisor (must not be 0).
+      responses:
+        200:
+          description: A JSON object containing the operands and the result.
+          schema:
+            type: object
+            properties:
+              x:
+                type: integer
+              y:
+                type: integer
+              result:
+                type: integer
+      x-google-backend:
+        address: https://us-central1-coe-453-1.cloudfunctions.net/div
